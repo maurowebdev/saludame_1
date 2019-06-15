@@ -5,7 +5,7 @@ get '/' do
   unless params[:nombre]
     "<h1>Hola desconocido!</h1>"
   else
-    "<h1>Hola #{params[:nombre]}!</h1>"
+    "<h1>Hola #{params[:nombre].to_s.capitalize}!</h1>"
   end
   #erb :index
 end

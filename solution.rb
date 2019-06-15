@@ -1,14 +1,32 @@
 require 'sinatra'
 #require 'sinatra/reloader'
 
-get '/' do
+# get '/' do
+#   unless params[:nombre]
+#     "<h1>Hola desconocido!</h1>"
+#   else
+#     "<h1>Hola #{params[:nombre].to_s.capitalize}!</h1>"
+#   end
+#   #erb :index
+# end
+get "/" do
   unless params[:nombre]
-    "Hola desconocido!"
+    <<-HTML
+      <h1>Hola desconocido!</h1>
+    HTML
   else
-    "Hola #{params[:nombre].to_s.capitalize}!"
+    if params[:nombre].empty?
+      <<-HTML
+        <h1>Hola desconocido!</h1>
+      HTML
+    else
+      <<-HTML
+        <h1>Hola #{params[:nombre]}!</h1>
+      HTML
+    end
   end
-  #erb :index
 end
+
 
 get '/makers/:nombre' do |nombre|
     "<h1>Hola #{nombre.to_s.capitalize}!</h1>"
